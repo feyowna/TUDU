@@ -10,21 +10,84 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-  <title>To-do list</title>
+
+  <!--Font: Instrument Sans, Roboto Mono-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">  <title>TUDU</title>
 </head>
 
 <body>
 
-  <main class="app">
-    <h1>My Todo List</h1>
-    <div class="input-header">
-      <span id="date"></span>
-      <div class="to-do-input">
-        <input type="text" id="item" placeholder="Enter a task..."><input type="datetime-local" id="deadline" placeholder="Enter deadline"><button id="enter">Enter</button>
-      </div>
+<!--Left Column-->
+  <main class="left-column">
+    <h1>tudu.</h1>
+    <h3>You have 4 pending tasks</h3>
+
+    <div>
+      <button class="category-box" type="text">School Assignment</button>
+      <button class="category-box" type="text">Friends &amp; Family</button>
+      <button class="category-box" type="text">Miscellaneous</button>
     </div>
-    <div class="to-do-list"></div>
+
+    <h3 style="margin-top: 20px; margin-bottom: 25px">Tuesday,  June 18th 2024</h3>
+
+    <div class="checkbox-list">
+      <label style="margin-left: 3.5px">Biology Mock Test
+        <input class="checkbox" type="checkbox">
+        <p class="sub-box">School Assignment</p>
+      </label>
+    </div>
+
+    <div class="checkbox-list">
+      <label style="margin-left: 3.5px">Cook Dinner
+        <input class="checkbox" type="checkbox">
+        <p class="sub-box">Family &amp; Friends</p>
+      </label>
+    </div>
+
+    <h3 style="margin-top: 35px; margin-bottom: 25px">Wednesday,  June 19th 2024</h3>
+
+    <div class="checkbox-list">
+      <label style="margin-left: 3.5px">Biology Mock Test
+        <input class="checkbox" type="checkbox">
+        <p class="sub-box">School Assignment</p>
+      </label>
+    </div>
+
   </main>
+
+<!--Right Column-->
+<div class="add-task right-column">
+
+  <!--Save and Cancel Task Button-->
+  <div>
+    <h2>Add new task</h2>
+    <button class="button" type="image" id=> <!--prlu buat js id when clicked ada notif "discard changes" and ada pilihan discard/cancel-->
+      <img src ="img/delete-icon.png" title="Save changes">
+    </button>
+    <button class="button" type="image" id="enter">
+      <img src ="img/save-icon.png" title="Save changes">
+    </button>
+  </div>
+
+<!--Enter Task Details-->
+  <div class="to-do-input">
+    <input type="text" id="item" placeholder="Enter task title">
+    <input type="datetime-local" id="deadline" placeholder="Enter deadline" style="cursor: pointer">
+    <div>
+      <textarea class="description-input" type="text" placeholder="Description"></textarea>
+    </div>
+  </div>
+
+  <div class="line"></div>
+
+<!--Add Sub Task: an input field that turns into a checkbox field when entered-->
+  <div></div>
+
+<div class="plus-task right-column">
+  <img src="img/plus-icon.png" style="margin-left: 2.6px; margin-top: 1.5px">
+</div>
 
   <script src="script.js"></script>
 
