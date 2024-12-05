@@ -1,11 +1,11 @@
-*{
+* {
   padding: 0;
   margin: 0;
 }
 
 body {
-  background: #FFFEFB; 
-  font-family: 'Instrument Sans';
+  background: #fffefb;
+  font-family: "Instrument Sans";
   min-height: 100vh;
 }
 
@@ -19,7 +19,6 @@ body {
   float: right;
   position: relative;
   top: 50px;
-  
 }
 
 /*Button*/
@@ -43,7 +42,7 @@ h1 {
   font-family: "Roboto Mono";
   font-weight: bold;
   font-size: 45px;
-  color: #304C89;
+  color: #304c89;
 }
 
 h2 {
@@ -53,7 +52,7 @@ h2 {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
-  color: #304C89;
+  color: #304c89;
 }
 
 h3 {
@@ -62,9 +61,9 @@ h3 {
   font-size: 20px;
   margin-top: 5px;
   margin-bottom: 5px;
-  color: #648DE5;
+  color: #648de5;
   stroke-width: 2px;
-  stroke: #9EB7E5
+  stroke: #9eb7e5;
 }
 
 /*Add task*/
@@ -72,14 +71,14 @@ h3 {
   background-color: transparent;
   width: 40px;
   height: 40px;
-  border: #304C89;
+  border: #304c89;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
   border-style: solid;
   border-width: 2px;
-  border-color: #304C89;
+  border-color: #304c89;
   margin-top: 140px;
   cursor: pointer;
   position: relative;
@@ -94,25 +93,25 @@ h3 {
   border-radius: 6px;
   cursor: pointer;
   font-family: inherit;
-  background-color: #FFFEFB;
-  color: #304C89;
+  background-color: #fffefb;
+  color: #304c89;
   margin-top: 40px;
   margin-bottom: 30px;
   margin-left: 750px;
-  margin-right:40px;
+  margin-right: 40px;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   border-style: solid;
   border-width: 2px;
-  border-color: #304C89;
+  border-color: #304c89;
 }
 
 .line {
   width: 400px;
   height: 2px;
-  background-color: #304C89;
+  background-color: #304c89;
   margin-left: 10px;
   margin-top: 10px;
   margin-bottom: 15px;
@@ -122,7 +121,7 @@ h3 {
   color: #757575;
   background-color: transparent;
   font-family: inherit;
-  border: #304C89;
+  border: #304c89;
   padding: 10px;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
@@ -130,19 +129,19 @@ h3 {
   border-bottom-right-radius: 6px;
   border-style: solid;
   border-width: 2px;
-  border-color: #304C89;
+  border-color: #304c89;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
 }
 
-.description-input{
-  color: #304C89;
+.description-input {
+  color: #304c89;
   background-color: transparent;
   width: 370px;
   height: 100px;
   font-family: inherit;
-  border: #304C89;
+  border: #304c89;
   padding: 10px;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
@@ -150,17 +149,17 @@ h3 {
   border-bottom-right-radius: 6px;
   border-style: solid;
   border-width: 2px;
-  border-color: #304C89;
+  border-color: #304c89;
   margin-bottom: 10px;
   margin-left: 10px;
   margin-top: 10px;
 }
 
 .to-do-input button {
-  color: #304C89;
+  color: #304c89;
   background-color: transparent;
   font-family: inherit;
-  border: #304C89;
+  border: #304c89;
   padding: 10px;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
@@ -168,18 +167,18 @@ h3 {
   border-bottom-right-radius: 6px;
   border-style: solid;
   border-width: 2px;
-  border-color: #304C89;
+  border-color: #304c89;
 }
 
 /*Category Boxes*/
-.category-box{
-  color: #304C89;
+.category-box {
+  color: #304c89;
   background-color: transparent;
   width: auto;
   height: auto;
   font-family: inherit;
   font-size: 15px;
-  border: #304C89;
+  border: #304c89;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -193,15 +192,15 @@ h3 {
   padding: 6px;
 }
 
-.sub-box{
+.sub-box {
   color: #ffee8c;
-  background-color: #9EB7E5;
+  background-color: #9eb7e5;
   width: auto;
   height: auto;
   font-family: inherit;
   font-size: 10px;
   font-weight: bold;
-  border: #304C89;
+  border: #304c89;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -216,14 +215,14 @@ h3 {
 }
 
 /*Task Checkboxes*/
-.checkbox-list{
-  color: #304C89;
+.checkbox-list {
+  color: #304c89;
   background-color: transparent;
   width: auto;
   height: auto;
   font-family: inherit;
   font-size: 15px;
-  border: #304C89;
+  border: #304c89;
   padding: 12px;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
@@ -231,13 +230,13 @@ h3 {
   border-bottom-right-radius: 6px;
   border-style: solid;
   border-width: 2px;
-  border-color: #304C89;
+  border-color: #304c89;
   margin-bottom: 15px;
   margin-left: 3px;
   cursor: pointer;
 }
 
-.checkbox {
+.to-do-checkbox {
   float: left;
   margin-right: 20px;
   margin-top: 11px;
@@ -247,6 +246,14 @@ h3 {
 }
 
 /*To-do-list*/
+
+li {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.3rem;
+}
+
 .to-do-list {
   display: flex;
   flex-direction: column;
@@ -254,12 +261,12 @@ h3 {
 }
 
 .to-do-list i {
-  color: #304C89;
+  color: #304c89;
   cursor: pointer;
 }
 
 .to-do-list .fa-pen-to-square {
-  color: #304C89;
+  color: #304c89;
 }
 
 .to-do-list button {
@@ -271,17 +278,17 @@ h3 {
   border-bottom-right-radius: 10px;
   border-style: solid;
   border-width: 2px;
-  border-color: #304C89;
+  border-color: #304c89;
 }
 
 .item {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: #304C89;
+  background-color: #304c89;
   border-radius: 10px;
   padding: 8px;
-  box-shadow: 0px 2px 4px 0px #304C89;
+  box-shadow: 0px 2px 4px 0px #304c89;
 }
 
 .input-controller {
@@ -292,15 +299,15 @@ h3 {
 .input-controller textarea {
   width: 100%;
   outline: none;
-  border: #304C89;
+  border: #304c89;
   resize: none;
   line-height: 1.4;
-  color: #FFFEFB;
+  color: #fffefb;
   border-radius: 10px;
   background-color: transparent;
   font-size: 1.2rem;
   font-family: inherit;
-  transition: all 0.30s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 textarea:focus {
@@ -316,7 +323,7 @@ textarea:focus {
   display: none;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .app {
     width: 95%;
     text-align: center;
@@ -334,5 +341,4 @@ textarea:focus {
   .to-do-input input {
     width: 300px;
   }
-
 }

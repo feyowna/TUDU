@@ -20,91 +20,28 @@ document.querySelector("#item").addEventListener("keypress", (e) => {
   }
 });
 
-function displayDate() {
-  let date = new Date();
-  date = date.toString().split(" ");
-  date = date[1] + " " + date[2] + " " + date[3];
-  document.querySelector("#date").innerHTML = date;
-}
-
 // Display to-do items
 function displayItems() {
-  let items = "";
-  for (let i = 0; i < itemsArray.length; i++) {
-    items += `<div class="item">
-                <div class="input-controller">
-                  <textarea disabled>${itemsArray[i].text}</textarea>
-                  <input type="datetime-local" disabled value="${itemsArray[i].deadline}" />
-                  <div class="edit-controller">
-                  <div class="edit-controller">
-                    <i class="fa-solid fa-check deleteBtn"></i>
-                    <i class="fa-solid fa-pen-to-square editBtn"></i>
-                  </div>
-                </div>
-                <div class="update-controller">
-                  <button class="saveBtn">Save</button>
-                  <button class="cancelBtn">Cancel</button>
-                </div>
-              </div>`;
-  }
-  document.querySelector("#to-do-list").innerHTML = items;
-  activateDeleteListeners();
-  activateEditListeners();
-  activateSaveListeners();
-  activateCancelListeners();
-}
-
-function activateDeleteListeners() {
-  let deleteBtn = document.querySelectorAll(".deleteBtn");
-  deleteBtn.forEach((dB, i) => {
-    dB.addEventListener("click", () => {
-      deleteItem(i);
+  const todoList = document.querySelector("#to-do-list");
+  todoList.innerHTML = "";
+  itemsArray.forEach((item, index) => {
+    const p = document.createElement("p");
+    p.innerHTML = `<div class="checkbox-list">
+                    <label style="margin-left: 3.5px" class="to-do-checkbox-${
+                      item.disabled ? "disabled" : ""
+                    }">${item.text}
+                      <input class="to-do-checkbox" type="checkbox"
+                      id="input-${index}" ${item.disabled ? "checked" : ""}>
+                      <p class="sub-box" id="to-do-${index}" onclick="editTask(${index})">${
+      item.description
+    }
+                      </p>
+                    </label>
+                  </div>`;
+    p.querySelector(".to-do-checkbox").addEventListener("change", () => {
+      toggleTask(index);
     });
-  });
-}
-
-function activateEditListeners() {
-  const editBtn = document.querySelectorAll(".editBtn");
-  const updateController = document.querySelectorAll(".update-controller");
-  const inputs = document.querySelectorAll(".input-controller textarea");
-  const deadlineInputs = document.querySelectorAll(
-    ".input-controller input[type='datetime-local']"
-  );
-  editBtn.forEach((eB, i) => {
-    eB.addEventListener("click", () => {
-      updateController[i].style.display = "block";
-      inputs[i].disabled = false;
-      deadlineInputs[i].disabled = false;
-    });
-  });
-}
-
-function activateSaveListeners() {
-  const saveBtn = document.querySelectorAll(".saveBtn");
-  const taskInputs = document.querySelectorAll(".input-controller textarea");
-  const deadlineInputs = document.querySelectorAll(
-    ".input-controller input[type='datetime-local']"
-  );
-
-  saveBtn.forEach((sB, i) => {
-    sB.addEventListener("click", () => {
-      updateItem(taskInputs[i].value, deadlineInputs[i].value, i);
-    });
-  });
-}
-
-function activateCancelListeners() {
-  const cancelBtn = document.querySelectorAll(".cancelBtn");
-  const updateController = document.querySelectorAll(".update-controller");
-  const inputs = document.querySelectorAll(".input-controller textarea");
-  cancelBtn.forEach((cB, i) => {
-    cB.addEventListener("click", () => {
-      updateController[i].style.display = "none";
-      inputs[i].disabled = true;
-      deadlines[i].disabled = true;
-      inputs[i].style.border = "none";
-      deadlines[i].style.border = "none";
-    });
+    todoList.appendChild(p);
   });
 }
 
@@ -120,15 +57,10 @@ function createItem(item, deadline, description) {
 
   itemsArray.push({
     text: item.value,
+    disabled: false,
     deadline: deadline.value,
     description: description.value,
   });
-  localStorage.setItem("items", JSON.stringify(itemsArray));
-  location.reload();
-}
-
-function deleteItem(i) {
-  itemsArray.splice(i, 1);
   localStorage.setItem("items", JSON.stringify(itemsArray));
   location.reload();
 }
@@ -140,6 +72,5 @@ function updateItem(text, deadline, i) {
 }
 
 window.onload = function () {
-  displayDate();
   displayItems();
 };
