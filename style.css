@@ -11,14 +11,14 @@ body {
 
 .left-column {
   float: left;
-  position: relative;
+  width: 50%;
   left: 50px;
 }
 
-.right.column {
+.right-column {
   float: right;
-  position: relative;
-  top: 50px;
+  width: 50%;
+  right: 50px;
 }
 
 /*Button*/
@@ -95,9 +95,7 @@ h3 {
   font-family: inherit;
   background-color: #fffefb;
   color: #304c89;
-  margin-top: 40px;
   margin-bottom: 30px;
-  margin-left: 750px;
   margin-right: 40px;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
