@@ -65,7 +65,7 @@
   </main>
 
 <!--Right Column-->
-<div class="add-task right-column">
+<dialog class="add-task right-column">
 
   <!--Save and Cancel Task Button-->
   <div>
@@ -81,19 +81,20 @@
 <!--Enter Task Details-->
   <div class="to-do-input">
     <input type="text" id="item" placeholder="Enter task title">
-    <input type="datetime-local" id="deadline" placeholder="Enter deadline" style="cursor: pointer">
+    <input type="date" id="deadline" placeholder="Enter deadline" style="cursor: pointer">
     <div>
       <textarea class="description-input" type="text" placeholder="Description"></textarea>
     </div>
   </div>
 
   <div class="line"></div>
-</div>
+</dialog>
 <!--Add Sub Task: an input field that turns into a checkbox field when entered-->
   <div></div>
 
 <div class="plus-task right-column">
-  <img src="img/plus-icon.png" style="margin-left: 2.6px; margin-top: 1.5px">
+  <button class="button" type="image" id="plus-button">
+    <img src="img/plus-icon.png" style="margin-left: 2.6px; margin-top: 1.5px">
 </div>
 
   <script src="script.js"></script>

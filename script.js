@@ -2,7 +2,7 @@ const itemsArray = localStorage.getItem("items")
   ? JSON.parse(localStorage.getItem("items"))
   : [];
 
-// event listener for "Enter" button
+// Event listener for "Enter" button
 document.querySelector("#enter").addEventListener("click", () => {
   const item = document.querySelector("#item");
   const deadline = document.querySelector("#deadline");
@@ -10,7 +10,7 @@ document.querySelector("#enter").addEventListener("click", () => {
   createItem(item, deadline, description);
 });
 
-//event listener for Enter keyboard press
+// Event listener for Enter keyboard press
 document.querySelector("#item").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     const item = document.querySelector("#item");
@@ -20,29 +20,61 @@ document.querySelector("#item").addEventListener("keypress", (e) => {
   }
 });
 
+// Event listener for "plus-button"click
+document.querySelector(".plus-button").addEventListener("click", () => {
+  const editWindow = document.querySelector("#add-task");
+  editWindow.showModal();
+});
+
 // Display to-do items
 function displayItems() {
   const todoList = document.querySelector("#to-do-list");
   todoList.innerHTML = "";
-  itemsArray.forEach((item, index) => {
-    const p = document.createElement("p");
-    p.innerHTML = `<div class="checkbox-list">
-                    <label style="margin-left: 3.5px" class="to-do-checkbox-${
-                      item.disabled ? "disabled" : ""
-                    }">${item.text}
-                      <input class="to-do-checkbox" type="checkbox"
-                      id="input-${index}" ${item.disabled ? "checked" : ""}>
-                      <p class="sub-box" id="to-do-${index}" onclick="editTask(${index})">${
-      item.description
-    }
-                      </p>
-                    </label>
-                  </div>`;
-    p.querySelector(".to-do-checkbox").addEventListener("change", () => {
-      toggleTask(index);
+
+  // Sort items by deadline (earliest to latest)
+  itemsArray.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+
+  // Group tasks by date
+  const groupedTasks = itemsArray.reduce((groups, item) => {
+    const date = new Date(item.deadline).toLocaleDateString("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
     });
-    todoList.appendChild(p);
-  });
+    if (!groups[date]) {
+      groups[date] = [];
+    }
+    groups[date].push(item);
+    return groups;
+  }, {});
+
+  // Render grouped tasks
+  for (const [date, tasks] of Object.entries(groupedTasks)) {
+    // Add date heading
+    const dateHeading = document.createElement("h3");
+    dateHeading.style.margin = "35px 0 25px";
+    dateHeading.textContent = date;
+    todoList.appendChild(dateHeading);
+
+    // Add tasks for this date
+    tasks.forEach((item, index) => {
+      const p = document.createElement("div");
+      p.className = "checkbox-list";
+      p.innerHTML = `
+        <label style="margin-left: 3.5px">${item.text}
+          <input class="to-do-checkbox" type="checkbox" id="input-${index}" ${
+        item.disabled ? "checked" : ""
+      }>
+          <p class="sub-box">${item.description}</p>
+        </label>
+      `;
+      p.querySelector(".to-do-checkbox").addEventListener("change", () => {
+        toggleTask(index);
+      });
+      todoList.appendChild(p);
+    });
+  }
 }
 
 function createItem(item, deadline, description) {
