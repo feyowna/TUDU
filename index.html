@@ -18,68 +18,69 @@
 </head>
 
 <body>
-  <!--Left Column-->
-  <main class="left-column">
-    <h1>tudu.</h1>
-    <h3>You have 4 pending tasks</h3>
+  <div id="container">
+  
+    <!--Left Column-->
+    <main class="left-column">
+      <h1>tudu.</h1>
+      <h3>You have 4 pending tasks</h3>
 
-    <div>
-      <button class="category-box" type="text">School Assignment</button>
-      <button class="category-box" type="text">Friends &amp; Family</button>
-      <button class="category-box" type="text">Miscellaneous</button>
-    </div>
-
-    <div>
-      <ul class="scroll">
-        <li id="to-do-list"></li>
-      </ul>
-    </div>
-
-  </main>
-
-  <!--Right Column-->
-  <div class="add-task right-column">
-
-    <!--Save and Cancel Task Button-->
-    <div>
-      <h2>Add new task</h2>
-      <button class="button" type="image" id=> <!--prlu buat js id when clicked ada notif "discard changes" and ada pilihan discard/cancel-->
-        <img src ="img/delete-icon.png" title="Discard changes">
-      </button>
-      <button class="button" type="image" id="enter">
-        <img src ="img/save-icon.png" title="Save changes">
-      </button>
-    </div>
-
-    <!--Enter Task Details-->
-    <div class="to-do-input">
-      <input type="text" id="item" placeholder="Enter task title">
-      <input type="date" id="deadline" placeholder="Enter deadline" style="cursor: pointer">
-      <label for="cars">Choose a car:</label>
-      <select name="cars" id="cars">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="opel">Opel</option>
-        <option value="audi">Audi</option>
-      </select>
       <div>
-        <textarea class="description-input" type="text" placeholder="Description"></textarea>
+        <button class="category-box" type="text">School Assignment</button>
+        <button class="category-box" type="text">Friends &amp; Family</button>
+        <button class="category-box" type="text">Miscellaneous</button>
       </div>
+
+      <div>
+        <ul class="scroll">
+          <li id="to-do-list"></li>
+        </ul>
+      </div>
+
+    </main>
+
+    <!--Right Column-->
+    <div class="add-task right-column">
+
+      <!--Save and Cancel Task Button-->
+      <div>
+        <h2>Add new task</h2>
+        <button class="button" type="image" id=> <!--prlu buat js id when clicked ada notif "discard changes" and ada pilihan discard/cancel-->
+          <img src ="img/delete-icon.png" title="Discard changes">
+        </button>
+        <button class="button" type="image" id="enter">
+          <img src ="img/save-icon.png" title="Save changes">
+        </button>
+      </div>
+
+      <!--Enter Task Details-->
+      <div class="to-do-input">
+        <input type="text" id="item" placeholder="Enter task title">
+        <input type="date" id="deadline" placeholder="Enter deadline" style="cursor: pointer">
+        <label for="cars">Choose a car:</label>
+        <select name="cars" id="cars">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+        <div>
+          <textarea class="description-input" type="text" placeholder="Description"></textarea>
+        </div>
+      </div>
+
+      <div class="line"></div>
     </div>
-
-    <div class="line"></div>
   </div>
-
   <!--Add Sub Task: an input field that turns into a checkbox field when entered-->
   <!-- <div>
     <input type="checkbox"
   </div> -->
 
-  <div class="plus-task">
-    <button class="button" type="image" id="plus-button">
-      <img src="img/plus-square.png">
-    </button>
+  <div class="plus-task" onclick="displayAddTask()">
+    <img src="img/plus-square.png">
   </div>
+
 
   <script src="script.js"></script>
 

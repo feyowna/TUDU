@@ -6,19 +6,22 @@
 body {
   background: #fffefb;
   font-family: "Instrument Sans";
-  min-height: 100vh;
+  min-height: 800px;
+}
+
+.container {
+  display: flex;
 }
 
 .left-column {
-  float: left;
-  width: 50%;
-  left: 50px;
+  margin-top: 100px;
+  margin-left: 20px;
+  justify-self: flex-start;
 }
 
 .right-column {
-  float: right;
-  width: 50%;
-  right: 50px;
+  margin-top: 10px;
+  justify-self: flex-end;
 }
 
 /*Button*/
@@ -27,7 +30,7 @@ body {
   background-color: transparent;
   border-color: transparent;
   float: right;
-  position: relative;
+  position: sticky;
   top: -40px;
   right: 10px;
 }
@@ -69,21 +72,18 @@ h3 {
 /*Add task*/
 .plus-task {
   background-color: transparent;
-  width: 40px;
-  height: 40px;
   border: #304c89;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
   border-style: solid;
-  border-width: 2px;
   border-color: #304c89;
-  margin-top: 140px;
+  right: 100px;
+  bottom:10px;
   cursor: pointer;
-  position: relative;
-  float: right;
-  bottom: 10px;
+  position: fixed;
+  display: flex;
 }
 
 .add-task {
