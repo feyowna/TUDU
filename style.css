@@ -9,7 +9,76 @@ body {
   min-height: 800px;
   padding: 50px 100px;
 }
+  .colored-line {
+        border: none; /* Remove default border */
+        height: 2px; /* Set the height of the line */
+        background-color: #304C89; /* Set the color of the line */
+        margin: 20px 0; /* Add some space above and below the line */
+    }
 
+body {
+    font-family:  "Instrument Sans";
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px; /* Width of the sidebar */
+    position: fixed;
+    top: 0;
+    left: -250px; /* Hide sidebar off-screen */
+    background-color: #F6EBA9;
+    color: #304C89;
+    transition: left 0.3s ease; /* Smooth transition */
+    padding: 20px;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-menu li {
+    margin: 15px 0;
+}
+
+.sidebar-menu a {
+    color: #304C89;
+    text-decoration: none;
+}
+
+.sidebar-menu a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    padding: 20px;
+}
+
+.open-btn {
+    background-color: #35424a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
 .container {
   display: flex;
   align-items: flex-start;
