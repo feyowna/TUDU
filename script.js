@@ -1,8 +1,8 @@
 const itemsArray = localStorage.getItem("items")
   ? JSON.parse(localStorage.getItem("items"))
   : [];
-
- function toggleSidebar() {
+ 
+function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     if (sidebar.style.left === '0px') {
         sidebar.style.left = '-250px'; // Hide sidebar
@@ -10,6 +10,7 @@ const itemsArray = localStorage.getItem("items")
         sidebar.style.left = '0px'; // Show sidebar
     }
 }
+
 // Event listener for "Enter" button
 document.querySelector("#enter").addEventListener("click", () => {
   const item = document.querySelector("#item");
