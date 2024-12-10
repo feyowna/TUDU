@@ -80,6 +80,12 @@ body {
     cursor: pointer;
 }
 
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
 .left-column {
   display: flex;
   flex-direction: column;
