@@ -20,6 +20,17 @@ document.querySelector("#item").addEventListener("keypress", (e) => {
   }
 });
 
+function toggleAddTask() {
+  const rightColumn = document.querySelector('.right-column'); // Select the right column
+  
+  if (rightColumn.style.display === "flex") {
+    rightColumn.style.display = "none";
+  } else {
+    rightColumn.style.display = "flex";
+  }
+}
+
+
 function displayItems() {
   const todoList = document.querySelector("#to-do-list");
   todoList.innerHTML = "";
@@ -46,7 +57,7 @@ function displayItems() {
   for (const [date, tasks] of Object.entries(groupedTasks)) {
     // Add date heading
     const dateHeading = document.createElement("h3");
-    dateHeading.style.margin = "20px 0 0 15px";
+    dateHeading.style.margin = "20px 0 0 0";
     dateHeading.textContent = date;
     todoList.appendChild(dateHeading);
 
@@ -54,7 +65,7 @@ function displayItems() {
     tasks.forEach((item, index) => {
       const p = document.createElement("div");
       p.className = "checkbox-list";
-      p.style.margin = "-3px 0 -3px 15px";
+      p.style.margin = "-3px 0 -3px 0";
       p.innerHTML = `
         <label style="margin-left: 3.5px">${item.text}
           <input class="to-do-checkbox" type="checkbox" id="input-${index}" ${

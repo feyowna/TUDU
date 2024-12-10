@@ -7,21 +7,42 @@ body {
   background: #fffefb;
   font-family: "Instrument Sans";
   min-height: 800px;
+  padding: 50px 100px;
 }
 
 .container {
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .left-column {
-  margin-top: 100px;
-  margin-left: 20px;
-  justify-self: flex-start;
+  display: flex;
+  flex-direction: column;
 }
 
 .right-column {
-  margin-top: 10px;
-  justify-self: flex-end;
+  margin-top: 100px;
+  margin-left: 50px;
+  display: none;
+  flex-direction: column;
+
+  width: auto;
+  height: auto;
+  padding: 8px;
+  border-radius: 6px;
+  font-family: inherit;
+  background-color: #fffefb;
+  color: #304c89;
+  margin-bottom: 30px;
+  margin-right: 40px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #304c89;
 }
 
 /*Button*/
@@ -79,32 +100,21 @@ h3 {
   border-bottom-right-radius: 6px;
   border-style: solid;
   border-color: #304c89;
-  right: 100px;
-  bottom:10px;
+  right: 200px;
+  bottom: 200px;
   cursor: pointer;
   position: fixed;
   display: flex;
 }
 
-.add-task {
-  width: auto;
-  height: auto;
-  padding: 8px;
-  border-radius: 6px;
+/* Add task window */
+.delete {
+  position: fixed;
   cursor: pointer;
-  font-family: inherit;
-  background-color: #fffefb;
-  color: #304c89;
-  margin-bottom: 30px;
-  margin-right: 40px;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #304c89;
+  right: 5px;
+  top: 5px;
 }
+
 
 .line {
   width: 400px;
@@ -157,6 +167,28 @@ h3 {
   color: #304c89;
   background-color: transparent;
   font-family: inherit;
+  border: #304c89;
+  padding: 10px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #304c89;
+} 
+
+.select-container {
+  display: flex;
+  justify-content: start;
+  position: relative;
+  min-width: 250px;
+  height: 40px;
+  padding: 10px;
+}
+
+.select-category {
+  color: #304c89;
   border: #304c89;
   padding: 10px;
   border-top-left-radius: 6px;
@@ -244,12 +276,10 @@ h3 {
 }
 
 /*To-do-list*/
-
 li {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  padding: 1.3rem;
 }
 
 .to-do-list {
