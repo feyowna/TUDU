@@ -35,7 +35,7 @@ body {
   color: #304c89;
   top: .4rem;
   left: 50%;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 50px;
   transform: translateX(-80%);
   cursor: pointer;
@@ -109,13 +109,6 @@ body {
   margin-right: -5px;
 }
 
-
-
-/*.button:hover {
-  width: 1%;
-  height: 1%;
-}*/
-
 /*Text*/
 h1 {
   font-family: "Roboto Mono";
@@ -149,6 +142,7 @@ h3 {
 .plus-task {
   background-color: transparent;
   padding: 15px;
+
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -157,14 +151,14 @@ h3 {
   border-color: #304c89;
 
   color:#304c89;
-  right: 200px;
-  bottom: 200px;
   cursor: pointer;
   position: fixed;
+  right: 20px;
+  bottom: 20px;
   display: flex;
-  font-weight: 900;
+  font: "Instrument Sans";
   align-items: center;
-  font-size: 22px;
+  font-size: 18px;
 
   transition: color 0.5s ease;
 }
@@ -267,9 +261,10 @@ h3 {
 }
 
 .select-category {
-  color: #304c89;
+  color: #757575;
   border: #304c89;
-  padding: 10px;
+  background-color: #fffefb;
+  padding: 7.5px;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -352,6 +347,7 @@ h3 {
   margin-left: 13px;
   width: 30px;
   height: 30px;
+  border-color: #304C89;
 }
 
 
@@ -431,22 +427,119 @@ textarea:focus {
   display: none;
 }
 
-@media (max-width: 768px) {
-  .app {
-    width: 95%;
-    text-align: center;
-  }
-
-  .input-header {
-    flex-direction: column;
-    padding-bottom: 20px;
-  }
-
-  .to-do-input {
-    display: flex;
-  }
-
-  .to-do-input input {
-    width: 300px;
-  }
+/*Discard Changes Alert*/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
 }
+
+.modal-content {
+  background-color: #CEDAF0;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  font-family: "Instrument Sans";
+  font-size: 15px;
+  border: 10px solid #304C89;
+  width: 300px; /* Could be more or less, depending on screen size */
+  text-align: center;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-width: 3px;
+}
+
+button {
+  background-color: #CEDAF0;
+  color: #304c89;
+  margin: 5px;
+  border: 2px solid #304C89;
+  border-radius: 6px;
+  width: 60px;
+  padding: 5px;
+}
+
+.cancel {
+  background-color: #304C89;
+  color: white;
+}
+
+.cancel:hover {
+  background-color: #CEDAF0;
+  color: #304C89;
+}
+
+button:hover {
+    background-color: #304c89;
+    color: #f;
+    c
+  }
+/*End of Discard Changes Alert*/
+
+
+/*Strikethrough*/
+.strikethrough {
+  text-decoration: line-through;
+  color: gray; 
+} 
+/*End of Strikethrough*/
+
+
+/*Checkboxes*/
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  display: none; /* Hide the default checkbox */
+}
+
+.checkbox-label {
+  position: relative;
+  padding-left: 30px; /* Space for the custom checkbox */
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+
+.checkbox-label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px; /* Width of the custom checkbox */
+  height: 20px; /* Height of the custom checkbox */
+  border: 2px solid #304C89; /* Border color */
+  border-radius: 2px;
+  background-color: transparent; /* Background color */
+  transition: background-color 0.3s, border-color 0.3s; /* Transition effects */
+}
+
+.checkbox:checked + .checkbox-label::before {
+  background-color: #304C89; /* Background color when checked */
+  border-color: #304C89; /* Border color when checked */
+}
+
+.checkbox:checked + .checkbox-label::after {
+  content: '';
+  position: absolute;
+  left: 8px; /* Position of the check mark */
+  top: 4px; /* Position of the check mark */
+  width: 5px; /* Width of the check mark */
+  height: 10px; /* Height of the check mark */
+  border: solid white; /* Check mark color */
+  border-width: 0 2px 2px 0; /* Check mark shape */
+  transform: rotate(45deg); /* Rotate to form a check mark */
+}
+
+.checkbox-list.checked {
+  background-color: rgba(0, 0, 0, 0.1); /* Light dark layer */
+}
+/*End of Checkboxes*/

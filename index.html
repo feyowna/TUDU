@@ -19,6 +19,24 @@
 </head>
 
 <body>
+  <!--punya Jelvin
+  <div>
+    <ul id="task-list">
+      <li>
+        <input type="checkbox" onchange="toggleStrikeThrough(this)">
+        <label>Complete the project</label>
+      </li>
+      <li>
+        <input type="checkbox" onchange="toggleStrikeThrough(this)">
+        <label>Attend the meeting</label>
+      </li>
+      <li>
+        <input type="checkbox" onchange="toggleStrikeThrough(this)">
+        <label>Buy groceries</label>
+      </li>
+    </ul>
+  </div>-->
+
   <div class="side-bar">
     <div class="top">
       <div>
@@ -64,6 +82,16 @@
         </div>
         <h2>Add new task</h2>
 
+  <!-- Jovan Blackscreen fully filled the screen ------------------------------->
+  <!-- Modal Structure -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <p>Discard unsaved changes?</p>
+      <button id="discard">Discard</button>
+      <button class="cancel" id="cancel">Cancel</button>
+    </div>
+  </div>
+
         <div class="line"></div>
         
         <!--Enter Task Details-->
@@ -87,16 +115,16 @@
       </div>
     </div>
   </div>
-  <!--Add Sub Task: an input field  hat turns into a checkbox field when entered-->
-  <!-- <div>
-    <input type="checkbox"
-  </div> -->
+
+  <!--Sub Task-->
+  <div class="checkbox-container">
+    <input type="checkbox" id="checkbox" class="checkbox">
+  </div>
 
   <div class="plus-task" onclick="openAddTask()">
     <i class='bx bx-plus-medical bx-xs'></i>
     <p>Add Task</p>
   </div>
-
 
   <script src="script.js"></script>
 

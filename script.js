@@ -6,7 +6,7 @@ const itemsArray = localStorage.getItem("items")
 document.querySelector("#enter").addEventListener("click", () => {
   const item = document.querySelector("#item");
   const deadline = document.querySelector("#deadline");
-  const description = document.querySelector(".description-input");
+  const description = document.querySelector(".select-category");
   createItem(item, deadline, description);
 });
 
@@ -15,7 +15,7 @@ document.querySelector("#item").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     const item = document.querySelector("#item");
     const deadline = document.querySelector("#deadline");
-    const description = document.querySelector(".description-input");
+    const description = document.querySelector(".select-category");
     createItem(item, deadline, description);
   }
 });
@@ -53,8 +53,6 @@ document.querySelectorAll('.to-do-checkbox').forEach((checkbox, index) => {
     customCheckbox.classList.add('checked'); // Make sure the custom checkbox reflects the initial state
   }
 });
-
-
 
 function displayItems() {
   const todoList = document.querySelector("#to-do-list");
@@ -137,3 +135,53 @@ function updateItem(text, deadline, i) {
 window.onload = function () {
   displayItems();
 };
+
+// Jovan | Blackscreen fully filled the screen
+function toggleAddTask() {
+  const rightColumn = document.querySelector('.right-column'); // Select the right column
+  
+  if (rightColumn.style.display === "flex") {
+    rightColumn.style.display = "none";
+  } else {
+    rightColumn.style.display = "flex";
+  }
+}
+
+// Show the modal when the delete button is clicked
+document.getElementById('delete').addEventListener('click', function() {
+  document.getElementById('modal').style.display = 'block';
+});
+
+// Hide the modal when the cancel button is clicked
+document.getElementById('cancel').addEventListener('click', function() {
+  document.getElementById('modal').style.display = 'none';
+});
+
+// Handle the discard action
+document.getElementById('discard').addEventListener('click', function() {
+  // Remove the entire edit button container
+  const container = document.getElementById('edit-button-container');
+  if (container) {
+    container.remove(); // This will delete the container from the DOM
+  }
+
+  // Close the right column container
+  toggleAddTask(); // Call the function to hide the right column
+
+  // Hide the modal
+  document.getElementById('modal').style.display = 'none';
+});
+
+/*punya Jelvin
+function toggleStrikeThrough(checkbox) {
+  const label = checkbox.nextElementSibling;
+  if (checkbox.checked) {
+    label.classList.add('strikethrough');
+  } else {
+    label.classList.remove('strikethrough');
+  }
+}*/
+
+
+
+/* let jovan cook */
