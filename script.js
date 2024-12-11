@@ -30,6 +30,31 @@ function openAddTask() {
   rightColumn.style.display = "flex";
 }
 
+document.querySelectorAll('.to-do-checkbox').forEach((checkbox, index) => {
+  const customCheckbox = checkbox.nextElementSibling; // Get the associated custom checkbox span
+  
+  // When the custom checkbox is clicked, toggle the hidden checkbox
+  customCheckbox.addEventListener('click', function() {
+    checkbox.checked = !checkbox.checked; // Toggle the checkbox state
+    checkbox.dispatchEvent(new Event('change')); // Trigger the change event to reflect state change
+  });
+  
+  // Listen for changes to the checkbox state and update the custom checkbox visual
+  checkbox.addEventListener('change', function() {
+    if (checkbox.checked) {
+      customCheckbox.classList.add('checked'); // Visual update when checked
+    } else {
+      customCheckbox.classList.remove('checked'); // Visual update when unchecked
+    }
+  });
+  
+  // Initialize the checkbox state on page load
+  if (checkbox.checked) {
+    customCheckbox.classList.add('checked'); // Make sure the custom checkbox reflects the initial state
+  }
+});
+
+
 
 function displayItems() {
   const todoList = document.querySelector("#to-do-list");
@@ -67,12 +92,13 @@ function displayItems() {
       p.className = "checkbox-list";
       p.style.margin = "-3px 0 -3px 0";
       p.innerHTML = `
-        <label style="margin-left: 3.5px">${item.text}
-          <input class="to-do-checkbox" type="checkbox" id="input-${index}" ${
-        item.disabled ? "checked" : ""
-      }>
-          <p class="sub-box">${item.description}</p>
-        </label>
+      <label style="margin-left: 15px">
+      ${item.text}
+        <span class="custom-checkbox"></span>
+        <input class="to-do-checkbox" type="checkbox" id="input-${index}" ${item.disabled ? "checked" : ""}>
+        <p class="sub-box">${item.description}</p>
+      </label>
+
       `;
       p.querySelector(".to-do-checkbox").addEventListener("change", () => {
         toggleTask(index);

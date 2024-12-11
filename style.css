@@ -6,7 +6,7 @@
 body {
   background: #fffefb;
   font-family: "Instrument Sans";
-  min-height: 800px;
+  width: auto;
 }
 
 /* Side Bar */
@@ -192,6 +192,7 @@ h3 {
   border-color:#fffefb;
   color: #fffefb;
 }
+
 /* Add task window */
 
 .line {
@@ -352,6 +353,7 @@ h3 {
   width: 30px;
   height: 30px;
 }
+
 
 /*To-do-list*/
 li {
