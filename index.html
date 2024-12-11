@@ -15,86 +15,86 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">  <title>TUDU</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
-  <div class="container">
-  
-    <!--Left Column-->
-    <main class="left-column">
-      <h1>tudu.</h1>
-      <h3>You have 4 pending tasks</h3>
-
-    <div>
-      <button class="category-box" type="text">School Assignment</button>
-      <button class="category-box" type="text">Friends &amp; Family</button>
-      <button class="category-box" type="text">Miscellaneous</button>
-    </div>
-
-    <div>
-      <ul class="scroll">
-        <li id="to-do-list"></li>
-      </ul>
-    </div>
+  <div class="side-bar">
+    <div class="top">
       <div>
-        <button class="category-box" type="text">School Assignment</button>
-        <button class="category-box" type="text">Friends &amp; Family</button>
-        <button class="category-box" type="text">Miscellaneous</button>
+        <i class='bx bx-menu bx-lg' id="menu-btn"></i>
       </div>
-
-      <div>
-        <ul class="scroll">
-          <li id="to-do-list"></li>
-        </ul>
-      </div>
-
-    </main>
-
-    <!--Right Column-->
-    <div class="right-column">
-
-      <!--Save and Cancel Task Button-->
-      
-      <div class="edit-button">
-        <button class="button" type="image" id="delete"> <!--prlu buat js id when clicked ada notif "discard changes" and ada pilihan discard/cancel-->
-          <img src ="img/delete-icon.png" title="Discard changes">
-        </button>
-        <div class="button" type="image" id="enter">
-          <img src ="img/save-icon.png" title="Save changes">
-        </div>
-      </div>
-      <h2>Add new task</h2>
-
-      <div class="line"></div>
-      
-      <!--Enter Task Details-->
-      <div class="to-do-input">
-        <input type="text" id="item" placeholder="Enter task title">
-        <input type="date" id="deadline" placeholder="Enter deadline" style="cursor: pointer">
-        <div class="select-container">
-          <select class="select-category">
-            <option>Category</option>
-            <option>School Assignments</option>
-            <option>Friends & Family</option>
-            <option>Miscellaneous</option>
-          </select>
-        </div>
-        <div>
-          <textarea class="description-input" type="text" placeholder="Description"></textarea>
-        </div>
-      </div>
-
-      
     </div>
   </div>
-  <!--Add Sub Task: an input field that turns into a checkbox field when entered-->
+
+  <div class="main-content">
+    <div class="container">
+    
+      <!--Left Column-->
+      <main class="left-column">
+        <h1>tudu.</h1>
+        <h3>You have 4 pending tasks</h3>
+
+        <div>
+          <button class="category-box" type="text">School Assignment</button>
+          <button class="category-box" type="text">Friends &amp; Family</button>
+          <button class="category-box" type="text">Miscellaneous</button>
+        </div>
+
+        <div>
+          <ul class="scroll">
+            <li id="to-do-list"></li>
+          </ul>
+        </div>
+
+      </main>
+
+      <!--Right Column-->
+      <div class="right-column">
+
+        <!--Save and Cancel Task Button-->
+        
+        <div class="edit-button">
+          <div class="button" type="image" id="delete"> <!--prlu buat js id when clicked ada notif "discard changes" and ada pilihan discard/cancel-->
+            <i class='bx bx-x bx-md'></i>
+          </div>
+          <div class="button" type="image" id="enter">
+            <i class='bx bx-save bx-sm'></i>
+          </div>
+        </div>
+        <h2>Add new task</h2>
+
+        <div class="line"></div>
+        
+        <!--Enter Task Details-->
+        <div class="to-do-input">
+          <input type="text" id="item" placeholder="Enter task title">
+          <input type="date" id="deadline" placeholder="Enter deadline" style="cursor: pointer">
+          <div class="select-container">
+            <select class="select-category">
+              <option>Category</option>
+              <option>School Assignments</option>
+              <option>Friends & Family</option>
+              <option>Miscellaneous</option>
+            </select>
+          </div>
+          <div>
+            <textarea class="description-input" type="text" placeholder="Description"></textarea>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+  <!--Add Sub Task: an input field  hat turns into a checkbox field when entered-->
   <!-- <div>
     <input type="checkbox"
   </div> -->
 
-  <div class="plus-task" onclick="toggleAddTask()">
-    <img src="img/plus-square.png">
-    Add Task
+  <div class="plus-task" onclick="openAddTask()">
+    <i class='bx bx-plus-medical bx-xs'></i>
+    <p>Add Task</p>
   </div>
 
 

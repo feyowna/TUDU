@@ -2,7 +2,6 @@ const itemsArray = localStorage.getItem("items")
   ? JSON.parse(localStorage.getItem("items"))
   : [];
 
-
 // Event listener for "Enter" button
 document.querySelector("#enter").addEventListener("click", () => {
   const item = document.querySelector("#item");
@@ -21,14 +20,14 @@ document.querySelector("#item").addEventListener("keypress", (e) => {
   }
 });
 
-function toggleAddTask() {
-  const rightColumn = document.querySelector('.right-column'); // Select the right column
-  
-  if (rightColumn.style.display === "flex") {
-    rightColumn.style.display = "none";
-  } else {
-    rightColumn.style.display = "flex";
-  }
+document.querySelector("#menu-btn").addEventListener("click", () => {
+  const sideBar = document.querySelector(".side-bar");
+  sideBar.classList.toggle('active');
+});
+
+function openAddTask() {
+  const rightColumn = document.querySelector('.right-column');
+  rightColumn.style.display = "flex";
 }
 
 

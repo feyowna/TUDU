@@ -7,10 +7,61 @@ body {
   background: #fffefb;
   font-family: "Instrument Sans";
   min-height: 800px;
-  padding: 50px 100px;
+}
+
+/* Side Bar */
+.side-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80px;
+  background-color: #ffee8c;
+  padding: 0.4rem 0.8rem;
+  transition: all 0.5s ease;
+}
+
+.side-bar.active ~ .main-content {
+  left: 250px;
+  width: calc(100% - 250px);
+}
+
+.side-bar.active {
+  width: 250px;
+}
+
+.side-bar #menu-btn {
+  position: absolute;
+  color: #304c89;
+  top: .4rem;
+  left: 50%;
+  font-size: 1.2rem;
+  line-height: 50px;
+  transform: translateX(-80%);
+  cursor: pointer;
+}
+
+/* Main content */
+.main-content {
+  position: relative;
+  background-color: #fffefb;
+  min-height: 100vh;
+  top: 0px;
+  left: 80px;
+  transition: all 0.5s ease;
+  width: calc(100% -80px);
+
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .left-column {
+  margin-left: 50px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
 }
@@ -46,9 +97,19 @@ body {
   border-color: transparent;
   float: right;
   position: sticky;
-  top: -40px;
-  right: 10px;
+  color: #304c89;
 }
+
+.bx-x {
+  margin-top: -3px;
+  margin-right: 2px;
+}
+.bx-save {
+  margin-top: 2px;
+  margin-right: -5px;
+}
+
+
 
 /*.button:hover {
   width: 1%;
@@ -87,6 +148,29 @@ h3 {
 /*Add task*/
 .plus-task {
   background-color: transparent;
+  padding: 15px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-style: solid;
+  border-color: #304c89;
+
+  color:#304c89;
+  right: 200px;
+  bottom: 200px;
+  cursor: pointer;
+  position: fixed;
+  display: flex;
+  font-weight: 900;
+  align-items: center;
+  font-size: 22px;
+
+  transition: color 0.5s ease;
+}
+
+.bx-plus-medical {
+  padding: 3px;
   border: #304c89;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
@@ -94,21 +178,21 @@ h3 {
   border-bottom-right-radius: 6px;
   border-style: solid;
   border-color: #304c89;
-  right: 200px;
-  bottom: 200px;
-  cursor: pointer;
-  position: fixed;
-  display: flex;
+  margin-right: 5px;
+  color: #304c89;
+  border-width: 4px;
 }
 
+.plus-task:hover {
+  background-color: #304c89;
+  color: #fffefb;
+}
+
+.plus-task:hover .bx-plus-medical {
+  border-color:#fffefb;
+  color: #fffefb;
+}
 /* Add task window */
-.delete {
-  position: fixed;
-  cursor: pointer;
-  right: 5px;
-  top: 5px;
-}
-
 
 .line {
   width: 400px;
@@ -170,7 +254,7 @@ h3 {
   border-style: solid;
   border-width: 2px;
   border-color: #304c89;
-} 
+}
 
 .select-container {
   display: flex;
