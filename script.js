@@ -1,4 +1,4 @@
-const itemsArray = localStorage.getItem("items")
+const todo = localStorage.getItem("items")
   ? JSON.parse(localStorage.getItem("items"))
   : [];
 
@@ -59,10 +59,10 @@ function displayItems() {
   todoList.innerHTML = "";
 
   // Sort items by deadline (earliest to latest)
-  itemsArray.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+  todo.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
 
   // Group tasks by date
-  const groupedTasks = itemsArray.reduce((groups, item) => {
+  const groupedTasks = todo.reduce((groups, item) => {
     const date = new Date(item.deadline).toLocaleDateString("en-US", {
       weekday: "long",
       month: "long",
@@ -90,12 +90,12 @@ function displayItems() {
       p.className = "checkbox-list";
       p.style.margin = "-3px 0 -3px 0";
       p.innerHTML = `
-      <label style="margin-left: 15px">
+      <p style="margin-left: 5px" class="${item.disabled ? "disabled" : ""}">
       ${item.text}
         <span class="custom-checkbox"></span>
         <input class="to-do-checkbox" type="checkbox" id="input-${index}" ${item.disabled ? "checked" : ""}>
         <p class="sub-box">${item.description}</p>
-      </label>
+      </p>
 
       `;
       p.querySelector(".to-do-checkbox").addEventListener("change", () => {
@@ -104,6 +104,12 @@ function displayItems() {
       todoList.appendChild(p);
     });
   }
+}
+
+function toggleTask(index) {
+  todo[index].disabled = !todo[index].disabled;
+  saveToLocalStorage();
+  displayItems()
 }
 
 function createItem(item, deadline, description) {
@@ -116,20 +122,24 @@ function createItem(item, deadline, description) {
     return;
   }
 
-  itemsArray.push({
+  todo.push({
     text: item.value,
     disabled: false,
     deadline: deadline.value,
     description: description.value,
   });
-  localStorage.setItem("items", JSON.stringify(itemsArray));
+  localStorage.setItem("items", JSON.stringify(todo));
   location.reload();
 }
 
 function updateItem(text, deadline, i) {
-  itemsArray[i] = { text, deadline, description };
-  localStorage.setItem("items", JSON.stringify(itemsArray));
+  todo[i] = { text, deadline, description };
+  localStorage.setItem("items", JSON.stringify(todo));
   location.reload();
+}
+
+function saveToLocalStorage() {
+  localStorage.setItem("items", JSON.stringify(todo));
 }
 
 window.onload = function () {
