@@ -274,8 +274,8 @@ h3 {
 .category-box {
   color: #304c89;
   background-color: transparent;
-  width: 10rem;
-  height: 2rem;
+  width: auto;
+  height: auto;
   font-family: inherit;
   font-size: 15px;
   border: #304c89;
@@ -344,6 +344,7 @@ h3 {
   width: 30px;
   height: 30px;
   border-color: #304C89;
+  cursor: pointer;
 }
 
 ul {
@@ -517,6 +518,10 @@ button:hover {
 .disabled {
   text-decoration: line-through;
   color: #757575;
+}
+
+.disabled-task {
+  background-color: #648de5;
 }
 
 /*End of Strikethrough*/

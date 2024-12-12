@@ -109,7 +109,7 @@ function displayItems() {
 function toggleTask(index) {
   todo[index].disabled = !todo[index].disabled;
   saveToLocalStorage();
-  displayItems()
+  displayItems();
 }
 
 function createItem(item, deadline, description) {
