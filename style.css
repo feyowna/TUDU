@@ -19,15 +19,21 @@ body {
   background-color: #ffee8c;
   padding: 0.4rem 0.8rem;
   transition: all 0.5s ease;
+  border: none;
+  margin: 0;
+  overflow: hidden;
+  
 }
 
 .side-bar.active ~ .main-content {
   left: 250px;
   width: calc(100% - 250px);
+  overflow: hidden;
 }
 
 .side-bar.active {
   width: 250px;
+  overflow: hidden;
 }
 
 .side-bar #menu-btn {
@@ -39,8 +45,8 @@ body {
   line-height: 50px;
   transform: translateX(-80%);
   cursor: pointer;
+  overflow: hidden;
 }
-
 
 /* Main content */
 .main-content {
@@ -150,7 +156,7 @@ h3 {
 
 /*Add task*/
 .plus-task {
-  background-color: transparent;
+  background-color: #fffefb;
   padding: 15px;
 
   border-top-left-radius: 6px;
@@ -287,7 +293,6 @@ h3 {
 /*Category Boxes*/
 .category-box {
   color: #304c89;
-  background-color: transparent;
   width: auto;
   height: auto;
   font-family: inherit;
@@ -304,6 +309,10 @@ h3 {
   margin-top: 10px;
   margin-right: 8px;
   padding: 6px;
+}
+
+.category-box:hover {
+  transform: scale(1.05);
 }
 
 .sub-box {
@@ -331,7 +340,7 @@ h3 {
 /*Task Checkboxes*/
 .checkbox-list {
   color: #304c89;
-  background-color: transparent;
+  background-color: #ffffff;
   width: auto;
   height: auto;
   font-family: inherit;
@@ -370,7 +379,6 @@ h3 {
 ul {
   padding: 0;
   margin: 0;
-  overflow-y: scroll;
 }
 
 li {
@@ -406,6 +414,7 @@ li {
 .scroll {
   height: 80vh;
   scrollbar-width: thin;
+  
 }
 
 .scroll::-webkit-scrollbar {
@@ -531,20 +540,9 @@ button {
 
 }
 
-.cancel {
-  background-color: #304C89;
-  color: white;
-  transition: color 0.5s ease;
-}
-
-.cancel:hover {
-  background-color: #CEDAF0;
-  color: #304C89;
-}
-
 button:hover {
     background-color: #304c89;
-    color: #fffefb;
+    color: #00d5ff;
   }
 /*End of Discard Changes Alert*/
 
@@ -555,10 +553,28 @@ button:hover {
   color: #757575;
 }
 
-.disabled-task {
-  background-color: #648de5;
+.checkbox-disabled {
+  background-color: rgba(158, 183, 229, 0.6);
+  color: #304c89;
+  width: auto;
+  height: auto;
+  font-family: inherit;
+  font-size: 15px;
+  border: #304c89;
+  padding: 12px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #304c89;
+  margin-bottom: 15px;
+  margin-left: 3px;
+  cursor: pointer;
+  transition: 0.2s;
+  transform: scale(1);
 }
-
 /*End of Strikethrough*/
 
 
@@ -613,3 +629,53 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.1); /* Light dark layer */
 }
 /*End of Checkboxes*/
+
+
+/*Right Click Taskbox Menu*/
+.context {
+  width: 200px;
+  height: 100px;
+  margin: 0;
+  padding-left: 0;
+  border-radius: 6px;
+  background-color: #CEDAF0;
+  position: fixed;
+  font-size: 12px;
+}
+
+.context-link {
+  list-style-type: none;
+  padding: 0.75em 1em;
+  font-size: 12px;
+  font: "Instrument Sans";
+  cursor: pointer;
+  color: #3a3939;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.context-link:hover {
+  background: #adbdda
+}
+
+.description-display {
+  background-color: #CEDAF0;
+  padding: 10px;
+  font-family: "Instrument Sans";
+  font-size: 12px;
+  border: 3px solid #304C89;
+  width: auto;
+  height: auto;
+  text-align: center;
+  border-radius: 6px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1001; /* Ensure it appears above other elements */
+}
+
+#contextmenu {
+  overflow: hidden;
+}
+
+/*End of Right Click Taskbox Menu*/

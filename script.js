@@ -2,6 +2,14 @@ const todo = localStorage.getItem("items")
           ? JSON.parse(localStorage.getItem("items"))
           : [];
 
+// 1 -- SIDEBAR
+document.querySelector("#menu-btn").addEventListener("click", () => {
+  const sideBar = document.querySelector(".side-bar");
+  sideBar.classList.toggle('active');
+});
+// 1 -- END OF SIDEBAR
+
+// 2 -- TASK LISTENER
 // Event listener for "Enter" button
 document.querySelector("#enter").addEventListener("click", () => {
   const item = document.querySelector("#item");
@@ -22,39 +30,10 @@ document.querySelector("#item").addEventListener("keypress", (e) => {
   }
 });
 
-document.querySelector("#menu-btn").addEventListener("click", () => {
-  const sideBar = document.querySelector(".side-bar");
-  sideBar.classList.toggle('active');
-});
-
 function openAddTask() {
   const rightColumn = document.querySelector('.right-column');
   rightColumn.style.display = "flex";
 }
-
-document.querySelectorAll('.to-do-checkbox').forEach((checkbox, index) => {
-  const customCheckbox = checkbox.nextElementSibling; // Get the associated custom checkbox span
-  
-  // When the custom checkbox is clicked, toggle the hidden checkbox
-  customCheckbox.addEventListener('click', () => {
-    checkbox.checked = !checkbox.checked; // Toggle the checkbox state
-    checkbox.dispatchEvent(new Event('change')); // Trigger the change event to reflect state change
-  });
-  
-  // Listen for changes to the checkbox state and update the custom checkbox visual
-  checkbox.addEventListener('change', () => {
-    if (checkbox.checked) {
-      customCheckbox.classList.add('checked'); // Visual update when checked
-    } else {
-      customCheckbox.classList.remove('checked'); // Visual update when unchecked
-    }
-  });
-  
-  // Initialize the checkbox state on page load
-  if (checkbox.checked) {
-    customCheckbox.classList.add('checked'); // Make sure the custom checkbox reflects the initial state
-  }
-});
 
 function displayItems() {
   const todoList = document.querySelector("#to-do-list");
@@ -91,7 +70,7 @@ function displayItems() {
     // Add tasks for this date
     tasks.forEach((item) => {
       const p = document.createElement("div");
-      p.className = "checkbox-list";
+      p.className = `${item.disabled ? "checkbox-disabled" : "checkbox-list"}`;
       p.style.margin = "-3px 0 -3px 0";
       p.innerHTML = `
       <span class="custom-checkbox"></span>
@@ -236,3 +215,39 @@ function saveToLocalStorage() {
 window.onload = function () {
   displayItems();
 };
+
+// Initialize context menu
+{
+  const contextMenu = document.querySelector(".context")
+  const updateMenuPosition = (x, y) => {
+      contextMenu.style.left = `${x}px`;
+      contextMenu.style.top = `${y}px`;
+      contextMenu.style.display = 'block';
+  };
+
+  document.addEventListener("contextmenu", (ev) => {
+    ev.preventDefault();
+
+    updateMenuPosition(ev.clientX, ev.clientY);
+  });
+
+  document.addEventListener('click', () => {
+      contextMenu.style.display = 'none'; // Hide the context menu
+  });
+
+  document.getElementById('action1').addEventListener('click', () => {
+    alert('Action 1 clicked');
+    contextMenu.style.display = 'none'; // Hide the context menu
+  });
+
+  document.getElementById('action2').addEventListener('click', () => {
+    alert('Action 2 clicked');
+    contextMenu.style.display = 'none'; // Hide the context menu
+  });
+
+  document.getElementById('action3').addEventListener('click', () => {
+    alert('Action 3 clicked');
+    contextMenu.style.display = 'none'; // Hide the context menu
+  });
+
+}

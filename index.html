@@ -14,19 +14,30 @@
   <!--Font: Instrument Sans, Roboto Mono-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">  <title>TUDU</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"> 
+  <title>TUDU</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
   <div class="side-bar">
     <div class="top">
-      <div>
+      <ul style="overflow: hidden">
         <i class='bx bx-menu bx-lg' id="menu-btn"></i>
-        <a href="#" onclick="showContent('Home')"><i class='bx bxs-home-alt-2'></i>Home</a>
-        <a href="#" onclick="showContent('Notification')"><i class='bx bxs-bell'></i>Notification</a>
-        <a href="#" onclick="showContent('Logout')"><i class='bx bx-log-out'></i>Log Out</a>
-      </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <li>
+          <a href="#" onclick="showContent('Home')"><i class='bx bxs-home-alt-2'></i>Home</a>
+        </li>
+        <li>
+          <a href="#" onclick="showContent('Notification')"><i class='bx bxs-bell'></i>Notification</a>
+        </li>
+        <li>
+          <a href="#" onclick="showContent('Logout')"><i class='bx bx-log-out'></i>Log Out</a>
+        </li>
+      </ul>
     </div>
   </div>
 
@@ -39,9 +50,9 @@
         <h3 id="task-counter">You have <span id="todoCount">0</span> pending tasks</h3>
         
         <div>
-          <button class="category-box" type="text">School Assignment</button>
-          <button class="category-box" type="text">Friends &amp; Family</button>
-          <button class="category-box" type="text">Miscellaneous</button>
+          <button class="category-box" type="text" style="background-color: #f9bdbd;">High Importance</button>
+          <button class="category-box" type="text" style="background-color: #fffbd1;">Medium Importance</button>
+          <button class="category-box" type="text" style="background-color: #dcffd1;">Low Importance</button>
         </div>
 
         <div>
@@ -55,14 +66,13 @@
       <!--Right Column-->
       <div class="right-column">
 
-        <!--Save and Cancel Task Button-->
-        
+        <!--Save and Cancel Task Button-->        
         <div class="edit-button">
           <div class="button" type="image" id="delete">
-            <i class='bx bx-x bx-md'></i>
+            <i class='bx bx-x bx-md' title="Cancel"></i>
           </div>
-          <div class="button" type="image" id="enter">
-            <i class='bx bx-save bx-sm'></i>
+          <div class="button" type="image" id="enter" style="margin-top: 1px;">
+            <i class='bx bx-save bx-sm' title="Save"></i>
           </div>
         </div>
         <h2>Add new task</h2>
@@ -84,11 +94,10 @@
           <input type="text" id="item" placeholder="Enter task title">
           <input type="date" id="deadline" placeholder="Enter deadline" style="cursor: pointer">
           <div class="select-container">
-            <select class="select-category">
-              <option>Category</option>
-              <option>School Assignments</option>
-              <option>Friends & Family</option>
-              <option>Miscellaneous</option>
+            <select class="select-category" placeholder="Importance Level" id="categorySelect"> <!-- Jovan adds categorySelect-->
+              <option>High Importance</option>
+              <option>Medium Importance</option>
+              <option>Low Importance</option>
             </select>
           </div>
           <div>
@@ -101,15 +110,30 @@
     </div>
   </div>
 
-  <!--Sub Task-->
-  <div class="checkbox-container">
-    <input type="checkbox" id="checkbox" class="checkbox">
-  </div>
-
   <div class="plus-task" onclick="openAddTask()">
     <i class='bx bx-plus-medical bx-xs'></i>
     <p>Add Task</p>
   </div>
+
+<!--Context Menu-->
+  <div>
+    <ul class="context" id="contextmenu">
+      <li class="context-link" id="action1">
+        <span class="context-label">Edit Task</span>
+      </li>
+      <li class="context-link" id="action2">
+        <span class="context-label">View Description</span>
+      </li>
+      <li class="context-link" id="action3">
+        <span class="context-label">Delete Task</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="description-display" id="descriptionDisplay">
+    <h3>Description:</h3>
+    <p id="descriptionText">No description entered yet.</p>
+  </div> -->
 
   <script src="script.js"></script>
 
