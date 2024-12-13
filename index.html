@@ -19,28 +19,13 @@
 </head>
 
 <body>
-  <!--punya Jelvin
-  <div>
-    <ul id="task-list">
-      <li>
-        <input type="checkbox" onchange="toggleStrikeThrough(this)">
-        <label>Complete the project</label>
-      </li>
-      <li>
-        <input type="checkbox" onchange="toggleStrikeThrough(this)">
-        <label>Attend the meeting</label>
-      </li>
-      <li>
-        <input type="checkbox" onchange="toggleStrikeThrough(this)">
-        <label>Buy groceries</label>
-      </li>
-    </ul>
-  </div>-->
-
   <div class="side-bar">
     <div class="top">
       <div>
         <i class='bx bx-menu bx-lg' id="menu-btn"></i>
+        <a href="#" onclick="showContent('Home')"><i class='bx bxs-home-alt-2'></i>Home</a>
+        <a href="#" onclick="showContent('Notification')"><i class='bx bxs-bell'></i>Notification</a>
+        <a href="#" onclick="showContent('Logout')"><i class='bx bx-log-out'></i>Log Out</a>
       </div>
     </div>
   </div>
@@ -51,8 +36,8 @@
       <!--Left Column-->
       <main class="left-column">
         <h1>tudu.</h1>
-        <h3>You have 4 pending tasks</h3>
-
+        <h3 id="task-counter">You have <span id="todoCount">0</span> pending tasks</h3>
+        
         <div>
           <button class="category-box" type="text">School Assignment</button>
           <button class="category-box" type="text">Friends &amp; Family</button>
@@ -73,7 +58,7 @@
         <!--Save and Cancel Task Button-->
         
         <div class="edit-button">
-          <div class="button" type="image" id="delete"> <!--prlu buat js id when clicked ada notif "discard changes" and ada pilihan discard/cancel-->
+          <div class="button" type="image" id="delete">
             <i class='bx bx-x bx-md'></i>
           </div>
           <div class="button" type="image" id="enter">

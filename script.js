@@ -1,13 +1,14 @@
 const todo = localStorage.getItem("items")
-  ? JSON.parse(localStorage.getItem("items"))
-  : [];
+          ? JSON.parse(localStorage.getItem("items"))
+          : [];
 
 // Event listener for "Enter" button
 document.querySelector("#enter").addEventListener("click", () => {
   const item = document.querySelector("#item");
   const deadline = document.querySelector("#deadline");
-  const description = document.querySelector(".select-category");
-  createItem(item, deadline, description);
+  const category = document.querySelector(".select-category");
+  const description = document.querySelector(".description-input");
+  createItem(item, deadline, category, description);
 });
 
 // Event listener for Enter keyboard press
@@ -15,8 +16,9 @@ document.querySelector("#item").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     const item = document.querySelector("#item");
     const deadline = document.querySelector("#deadline");
-    const description = document.querySelector(".select-category");
-    createItem(item, deadline, description);
+    const category = document.querySelector(".select-category");
+    const description = document.querySelector(".description-input");
+    createItem(item, deadline, category, description);
   }
 });
 
@@ -34,13 +36,13 @@ document.querySelectorAll('.to-do-checkbox').forEach((checkbox, index) => {
   const customCheckbox = checkbox.nextElementSibling; // Get the associated custom checkbox span
   
   // When the custom checkbox is clicked, toggle the hidden checkbox
-  customCheckbox.addEventListener('click', function() {
+  customCheckbox.addEventListener('click', () => {
     checkbox.checked = !checkbox.checked; // Toggle the checkbox state
     checkbox.dispatchEvent(new Event('change')); // Trigger the change event to reflect state change
   });
   
   // Listen for changes to the checkbox state and update the custom checkbox visual
-  checkbox.addEventListener('change', function() {
+  checkbox.addEventListener('change', () => {
     if (checkbox.checked) {
       customCheckbox.classList.add('checked'); // Visual update when checked
     } else {
@@ -56,6 +58,8 @@ document.querySelectorAll('.to-do-checkbox').forEach((checkbox, index) => {
 
 function displayItems() {
   const todoList = document.querySelector("#to-do-list");
+  const todoCount = document.querySelector("#todoCount");
+
   todoList.innerHTML = "";
 
   // Sort items by deadline (earliest to latest)
@@ -85,50 +89,47 @@ function displayItems() {
     todoList.appendChild(dateHeading);
 
     // Add tasks for this date
-    tasks.forEach((item, index) => {
+    tasks.forEach((item) => {
       const p = document.createElement("div");
       p.className = "checkbox-list";
       p.style.margin = "-3px 0 -3px 0";
       p.innerHTML = `
-      <p style="margin-left: 5px" class="${item.disabled ? "disabled" : ""}">
-      ${item.text}
-        <span class="custom-checkbox"></span>
-        <input class="to-do-checkbox" type="checkbox" id="input-${index}" ${item.disabled ? "checked" : ""}>
-        <p class="sub-box">${item.description}</p>
-      </p>
-
+      <span class="custom-checkbox"></span>
+      <input class="to-do-checkbox" type="checkbox" id="input-${todo.indexOf(item)}" ${item.disabled ? "checked" : ""}>
+      <p style="margin-left: 70px" id="todo-${todo.indexOf(item)}" class="${item.disabled ? "disabled" : ""}" onclick="editTask(${todo.indexOf(item)})">
+      ${item.text}</p>
+      <p class="sub-box">${item.category}</p>
       `;
       p.querySelector(".to-do-checkbox").addEventListener("change", () => {
-        toggleTask(index);
+        toggleTask(todo.indexOf(item));
       });
       todoList.appendChild(p);
     });
   }
+  const disabledCount = todo.filter(item => !item.disabled).length;
+  todoCount.textContent = disabledCount;
 }
 
-function toggleTask(index) {
-  todo[index].disabled = !todo[index].disabled;
-  saveToLocalStorage();
-  displayItems();
-}
-
-function createItem(item, deadline, description) {
+function createItem(item, deadline, category, description) {
   if (
     item.value.trim() === "" ||
     deadline.value === "" ||
+    category.value === "Category" ||
     description.value.trim() === ""
   ) {
     alert("Please fill in all fields.");
     return;
   }
-
+  
   todo.push({
     text: item.value,
     disabled: false,
     deadline: deadline.value,
+    category: category.value,
     description: description.value,
   });
   localStorage.setItem("items", JSON.stringify(todo));
+  clearInput();
   location.reload();
 }
 
@@ -138,23 +139,69 @@ function updateItem(text, deadline, i) {
   location.reload();
 }
 
-function saveToLocalStorage() {
-  localStorage.setItem("items", JSON.stringify(todo));
-}
-
-window.onload = function () {
-  displayItems();
-};
-
-// Jovan | Blackscreen fully filled the screen
 function toggleAddTask() {
-  const rightColumn = document.querySelector('.right-column'); // Select the right column
+  const rightColumn = document.querySelector('.right-column');
   
   if (rightColumn.style.display === "flex") {
     rightColumn.style.display = "none";
   } else {
     rightColumn.style.display = "flex";
   }
+  clearInput();
+}
+
+function toggleTask(index) {
+  todo[index].disabled = !todo[index].disabled;
+  saveToLocalStorage();
+  displayItems();
+}
+
+function deleteTask(index) {
+  todo.splice(index, 1);
+  saveToLocalStorage();
+}
+
+function editTask(index) {
+  const todoItem = document.getElementById(`todo-${index}`);
+  const existingText = todo[index].text;
+  const inputElement = document.createElement("input");
+  inputElement.classList.add("edit-task");
+
+  inputElement.value = existingText;
+  todoItem.replaceWith(inputElement);
+  inputElement.focus();
+  
+  inputElement.addEventListener("blur", () => {
+    const updatedText = inputElement.value.trim();
+    if (updatedText) {
+      todo[index].text = updatedText;
+      saveToLocalStorage();
+      displayItems();
+    }
+  });
+  
+  inputElement.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      const updatedText = inputElement.value.trim();
+      if (updatedText) {
+        todo[index].text = updatedText;
+        saveToLocalStorage();
+        displayItems();
+      }
+    }
+  });
+}
+
+function clearInput() {
+  const item = document.querySelector("#item");
+  const deadline = document.querySelector("#deadline");
+  const category = document.querySelector(".select-category");
+  const description = document.querySelector(".description-input");
+  
+  item.value = "";
+  deadline.value = "";
+  category.value = "Category";
+  description.value = "";
 }
 
 // Show the modal when the delete button is clicked
@@ -163,35 +210,29 @@ document.getElementById('delete').addEventListener('click', function() {
 });
 
 // Hide the modal when the cancel button is clicked
-document.getElementById('cancel').addEventListener('click', function() {
+document.getElementById('cancel').addEventListener('click', () => {
   document.getElementById('modal').style.display = 'none';
 });
 
 // Handle the discard action
-document.getElementById('discard').addEventListener('click', function() {
+document.getElementById('discard').addEventListener('click', () => {
   // Remove the entire edit button container
   const container = document.getElementById('edit-button-container');
   if (container) {
-    container.remove(); // This will delete the container from the DOM
+    container.remove();
   }
-
+  
   // Close the right column container
-  toggleAddTask(); // Call the function to hide the right column
-
+  toggleAddTask();
+  
   // Hide the modal
   document.getElementById('modal').style.display = 'none';
 });
 
-/*punya Jelvin
-function toggleStrikeThrough(checkbox) {
-  const label = checkbox.nextElementSibling;
-  if (checkbox.checked) {
-    label.classList.add('strikethrough');
-  } else {
-    label.classList.remove('strikethrough');
-  }
-}*/
+function saveToLocalStorage() {
+  localStorage.setItem("items", JSON.stringify(todo));
+}
 
-
-
-/* let jovan cook */
+window.onload = function () {
+  displayItems();
+};
