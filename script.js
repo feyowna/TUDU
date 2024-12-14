@@ -70,7 +70,7 @@ function displayItems() {
     // Add tasks for this date
     tasks.forEach((item) => {
       const p = document.createElement("div");
-      p.className = `${item.disabled ? "checkbox-disabled" : "checkbox-list"}`;
+      p.className = `${item.disabled ? "checkbox-disabled" : ""} checkbox-list`;
       p.id = `${todo.indexOf(item)}`
       p.style.margin = "-3px 0 -3px 0";
       p.innerHTML = `
@@ -233,7 +233,7 @@ window.onload = function () {
   elementId = null;
 
   document.addEventListener("contextmenu", (ev) => {
-    if (ev.target.closest(".checkbox-list") || ev.target.closest(".checkbox-disabled")) {
+    if (ev.target.closest(".checkbox-list")) {
       elementId = ev.target.closest(".checkbox-list").id;
       ev.preventDefault(); // Prevent default context menu
       updateMenuPosition(ev.clientX, ev.clientY);

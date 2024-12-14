@@ -645,6 +645,7 @@ button:hover {
   background-color: #CEDAF0;
   position: fixed;
   font-size: 12px;
+  display: none;
 }
 
 .context-link {
