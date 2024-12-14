@@ -251,7 +251,12 @@ window.onload = function () {
 
   document.getElementById('action2').addEventListener('click', () => {
     contextMenu.style.display = 'none';
-  
+
+    const todoDescription = document.querySelector("#descriptionText");
+    todoDescription.textContent(todo[elementId].description);
+
+    const descriptionDisplay = document.querySelector(".description-display");
+    descriptionDisplay.style.display = 'block';
   });
 
   document.getElementById('action3').addEventListener('click', () => {
