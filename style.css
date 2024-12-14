@@ -575,6 +575,10 @@ button:hover {
   transition: 0.2s;
   transform: scale(1);
 }
+
+.checkbox-disabled:hover {
+  transform: scale(1.05);
+}
 /*End of Strikethrough*/
 
 

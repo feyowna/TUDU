@@ -218,7 +218,10 @@ window.onload = function () {
 
 // Initialize context menu
 {
-  const contextMenu = document.querySelector(".context")
+  const contextMenu = document.querySelector(".context");
+  const todoCheckbox = document.querySelector(".checkbox-list");
+  const checkboxDisabled = document.querySelector(".checkbox-disabled");
+  
   const updateMenuPosition = (x, y) => {
       contextMenu.style.left = `${x}px`;
       contextMenu.style.top = `${y}px`;
@@ -226,11 +229,12 @@ window.onload = function () {
   };
 
   document.addEventListener("contextmenu", (ev) => {
-    ev.preventDefault();
-
-    updateMenuPosition(ev.clientX, ev.clientY);
+    if (ev.target.closest(".checkbox-list")) {
+      ev.preventDefault(); // Prevent default context menu
+      updateMenuPosition(ev.clientX, ev.clientY);
+  }
   });
-
+  
   document.addEventListener('click', () => {
       contextMenu.style.display = 'none'; // Hide the context menu
   });
