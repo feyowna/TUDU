@@ -23,20 +23,8 @@
   <div class="side-bar">
     <div class="top">
       <ul style="overflow: hidden">
-        <i class='bx bx-menu bx-lg' id="menu-btn"></i>
-        <br>
-        <br>
-        <br>
-        <br>
-        <li>
-          <a href="#" onclick="showContent('Home')"><i class='bx bxs-home-alt-2'></i>Home</a>
-        </li>
-        <li>
-          <a href="#" onclick="showContent('Notification')"><i class='bx bxs-bell'></i>Notification</a>
-        </li>
-        <li>
-          <a href="#" onclick="showContent('Logout')"><i class='bx bx-log-out'></i>Log Out</a>
-        </li>
+        <i class='bx bx-menu bx-lg' id="menu-btn" style="margin-left: 13px"></i>
+        
       </ul>
     </div>
   </div>
@@ -50,9 +38,9 @@
         <h3 id="task-counter">You have <span id="todoCount">0</span> pending tasks</h3>
         
         <div>
-          <button class="category-box" type="text" style="background-color: #f9bdbd;">High Importance</button>
-          <button class="category-box" type="text" style="background-color: #fffbd1;">Medium Importance</button>
-          <button class="category-box" type="text" style="background-color: #dcffd1;">Low Importance</button>
+          <button class="category-box" type="text" style="background-color: #9eb7e5;">Organize Tasks</button>
+          <button class="category-box" type="text" style="background-color: #9eb7e5;">Vizualize Lists</button>
+          <button class="category-box" type="text" style="background-color: #9eb7e5;">Elevate Lifestyle</button> 
         </div>
 
         <div>
@@ -124,7 +112,7 @@
       <li class="context-link" id="action2">
         <span class="context-label">View Description</span>
       </li>
-      <li class="context-link" onclick="deleteTask()">
+      <li class="context-link" id="action3">
         <span class="context-label">Delete Task</span>
       </li>
     </ul>

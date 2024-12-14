@@ -221,8 +221,7 @@ window.onload = function () {
 // Initialize context menu
 {
   const contextMenu = document.querySelector(".context");
-  const todoCheckbox = document.querySelector(".checkbox-list");
-  const checkboxDisabled = document.querySelector(".checkbox-disabled");
+  const todoDescription = document.querySelector("#descriptionText");
   
   const updateMenuPosition = (x, y) => {
       contextMenu.style.left = `${x}px`;
@@ -244,23 +243,22 @@ window.onload = function () {
     contextMenu.style.display = 'none'; // Hide the context menu
   });
   
-  document.getElementById('action1').addEventListener('click', () => {
+  document.getElementById('action1').addEventListener("click", () => {
     contextMenu.style.display = 'none'; // Hide the context menu
     editTask(elementId);
   });
-
-  document.getElementById('action2').addEventListener('click', () => {
+  
+  document.getElementById('action2').addEventListener("click", () => {
     contextMenu.style.display = 'none';
-
-    const todoDescription = document.querySelector("#descriptionText");
-    todoDescription.textContent(todo[elementId].description);
-
+    
+    todoDescription.textContent = todo[elementId].description;
     const descriptionDisplay = document.querySelector(".description-display");
     descriptionDisplay.style.display = 'block';
   });
 
-  document.getElementById('action3').addEventListener('click', () => {
+  document.getElementById('action3').addEventListener("click", () => {
     contextMenu.style.display = 'none'; 
+    descriptionDisplay.style.display = 'none';
     deleteTask(elementId);
   });
 }
