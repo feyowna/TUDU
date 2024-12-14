@@ -71,11 +71,12 @@ function displayItems() {
     tasks.forEach((item) => {
       const p = document.createElement("div");
       p.className = `${item.disabled ? "checkbox-disabled" : "checkbox-list"}`;
+      p.id = `${todo.indexOf(item)}`
       p.style.margin = "-3px 0 -3px 0";
       p.innerHTML = `
       <span class="custom-checkbox"></span>
       <input class="to-do-checkbox" type="checkbox" id="input-${todo.indexOf(item)}" ${item.disabled ? "checked" : ""}>
-      <p style="margin-left: 70px" id="todo-${todo.indexOf(item)}" class="${item.disabled ? "disabled" : ""}" onclick="editTask(${todo.indexOf(item)})">
+      <p style="margin-left: 70px" id="todo-${todo.indexOf(item)}" class="${item.disabled ? "disabled" : ""}">
       ${item.text}</p>
       <p class="sub-box">${item.category}</p>
       `;
@@ -107,15 +108,15 @@ function createItem(item, deadline, category, description) {
     category: category.value,
     description: description.value,
   });
-  localStorage.setItem("items", JSON.stringify(todo));
+  saveToLocalStorage();
   clearInput();
-  location.reload();
+  displayItems();
 }
 
 function updateItem(text, deadline, i) {
   todo[i] = { text, deadline, description };
   localStorage.setItem("items", JSON.stringify(todo));
-  location.reload();
+  displayItems();
 }
 
 function toggleAddTask() {
@@ -138,6 +139,7 @@ function toggleTask(index) {
 function deleteTask(index) {
   todo.splice(index, 1);
   saveToLocalStorage();
+  displayItems();
 }
 
 function editTask(index) {
@@ -179,7 +181,7 @@ function clearInput() {
   
   item.value = "";
   deadline.value = "";
-  category.value = "Category";
+  category.value = "High Importance";
   description.value = "";
 }
 
@@ -228,30 +230,32 @@ window.onload = function () {
       contextMenu.style.display = 'block';
   };
 
+  elementId = null;
+
   document.addEventListener("contextmenu", (ev) => {
-    if (ev.target.closest(".checkbox-list")) {
+    if (ev.target.closest(".checkbox-list") || ev.target.closest(".checkbox-disabled")) {
+      elementId = ev.target.closest(".checkbox-list").id;
       ev.preventDefault(); // Prevent default context menu
       updateMenuPosition(ev.clientX, ev.clientY);
-  }
+    }
   });
   
   document.addEventListener('click', () => {
-      contextMenu.style.display = 'none'; // Hide the context menu
-  });
-
-  document.getElementById('action1').addEventListener('click', () => {
-    alert('Action 1 clicked');
     contextMenu.style.display = 'none'; // Hide the context menu
+  });
+  
+  document.getElementById('action1').addEventListener('click', () => {
+    contextMenu.style.display = 'none'; // Hide the context menu
+    editTask(elementId);
   });
 
   document.getElementById('action2').addEventListener('click', () => {
-    alert('Action 2 clicked');
-    contextMenu.style.display = 'none'; // Hide the context menu
+    contextMenu.style.display = 'none';
+  
   });
 
   document.getElementById('action3').addEventListener('click', () => {
-    alert('Action 3 clicked');
-    contextMenu.style.display = 'none'; // Hide the context menu
+    contextMenu.style.display = 'none'; 
+    deleteTask(elementId);
   });
-
 }
