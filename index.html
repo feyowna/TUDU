@@ -6,43 +6,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-
-  <!--Font: Instrument Sans, Roboto Mono-->
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"> 
   <title>TUDU</title>
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
-  <div class="side-bar">
-    <div class="top">
-      <ul style="overflow: hidden">
-        <i class='bx bx-menu bx-lg' id="menu-btn" style="margin-left: 13px"></i>
-        
-      </ul>
-    </div>
-  </div>
-
   <div class="main-content">
     <div class="container">
     
       <!--Left Column-->
       <main class="left-column">
         <h1>tudu.</h1>
-        <h3 id="task-counter">You have <span id="todoCount">0</span> pending tasks</h3>
+        <h3 id="task-counter" class="category-box">You have <span id="todoCount">0</span> pending tasks</h3>
         
-        <div>
-          <button class="category-box" type="text" style="background-color: #9eb7e5;">Organize Tasks</button>
-          <button class="category-box" type="text" style="background-color: #9eb7e5;">Vizualize Lists</button>
-          <button class="category-box" type="text" style="background-color: #9eb7e5;">Elevate Lifestyle</button> 
-        </div>
-
         <div>
           <ul class="scroll">
             <li id="to-do-list"></li>
@@ -65,15 +46,14 @@
         </div>
         <h2>Add new task</h2>
 
-  <!-- Jovan Blackscreen fully filled the screen ------------------------------->
-  <!-- Modal Structure -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <p>Discard unsaved changes?</p>
-      <button id="discard">Discard</button>
-      <button class="cancel" id="cancel">Cancel</button>
-    </div>
-  </div>
+        <!--Discard Changed Alert-->
+        <div id="modal" class="modal">
+          <div class="modal-content">
+           <p>Discard unsaved changes?</p>
+            <button id="discard">Discard</button>
+            <button class="cancel" id="cancel">Cancel</button>
+          </div>
+        </div>
 
         <div class="line"></div>
         
@@ -82,7 +62,7 @@
           <input type="text" id="item" placeholder="Enter task title">
           <input type="date" id="deadline" placeholder="Enter deadline" style="cursor: pointer">
           <div class="select-container">
-            <select class="select-category" placeholder="Importance Level" id="categorySelect"> <!-- Jovan adds categorySelect-->
+            <select class="select-category" placeholder="Importance Level">
               <option>High Importance</option>
               <option>Medium Importance</option>
               <option>Low Importance</option>
@@ -92,17 +72,16 @@
             <textarea class="description-input" type="text" placeholder="Description"></textarea>
           </div>
         </div>
-
-        
+      </div>
+  
+      <!--Add Task Button-->
+      <div class="plus-task" onclick="openAddTask()">
+        <i class='bx bx-plus-medical bx-xs'></i>
+        <p>Add Task</p>
       </div>
     </div>
   </div>
-
-  <div class="plus-task" onclick="openAddTask()">
-    <i class='bx bx-plus-medical bx-xs'></i>
-    <p>Add Task</p>
-  </div>
-
+  
 <!--Context Menu-->
   <div>
     <ul class="context" id="contextmenu">
@@ -118,13 +97,17 @@
     </ul>
   </div>
 
-  <div class="description-display" id="descriptionDisplay">
-    <h3>Description:</h3>
-    <p id="descriptionText">No description entered yet.</p>
-  </div> 
+    <!--Description Display Function-->
+    <div class="description-display modal" id="descriptionDisplay">
+      <div class="edit-button" onclick="closeDescription()">
+        <div class="button" type="image" id="delete">
+         <i class='bx bx-x bx-md' title="Cancel"></i>
+      </div>  
+      <h4>Description:</h4>
+      <p id="descriptionText">No description entered yet.</p>
+   </div> 
 
   <script src="script.js"></script>
-
 </body>
 
 </html>

@@ -6,47 +6,9 @@
 body {
   background: #fffefb;
   font-family: "Instrument Sans";
-  height: 100vh;
-}
-
-/* Side Bar */
-.side-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
   height: 100%;
-  width: 80px;
-  background-color: #ffee8c;
-  padding: 0.4rem 0.8rem;
-  transition: all 0.5s ease;
-  border: none;
-  margin: 0;
-  overflow: hidden;
-  
 }
 
-.side-bar.active ~ .main-content {
-  left: 250px;
-  width: calc(100% - 250px);
-  overflow: hidden;
-}
-
-.side-bar.active {
-  width: 250px;
-  overflow: hidden;
-}
-
-.side-bar #menu-btn {
-  position: absolute;
-  color: #304c89;
-  top: .4rem;
-  left: 50%;
-  font-size: 1rem;
-  line-height: 50px;
-  transform: translateX(-80%);
-  cursor: pointer;
-  overflow: hidden;
-}
 
 /* Main content */
 .main-content {
@@ -69,6 +31,7 @@ body {
 .left-column {
   display: flex;
   flex-direction: column;
+  width: 40%;
 }
 
 .right-column {
@@ -92,6 +55,8 @@ body {
   border-width: 2px;
   border-color: #304c89;
 }
+/* Main content */
+
 
 /*Button*/
 .button {
@@ -124,6 +89,8 @@ body {
 .bx-save:hover {
   transform: scale(1.2);
 }
+/*End of Button*/
+
 
 /*Text*/
 h1 {
@@ -154,7 +121,41 @@ h3 {
   stroke: #9eb7e5;
 }
 
-/*Add task*/
+h4 {
+  font-family: "Instrument Sans";
+  font-weight: lighter;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: #fffefb;
+  stroke-width: 2px;
+}
+/*End of Text*/
+
+
+.category-box {
+  color: #fffefb;
+  background-color: #9eb7e5;
+  width: 300px;
+  height: 20px;
+  font-family: inherit;
+  font-size: 15px;
+  border: #304c89;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-style: solid;
+  border-width: 2px;
+  margin-bottom: 10px;
+  margin-left: 2px;
+  margin-top: 10px;
+  margin-right: 8px;
+  padding: 6px;
+}
+
+
+/*Add task button*/
 .plus-task {
   background-color: #fffefb;
   padding: 15px;
@@ -202,9 +203,10 @@ h3 {
   border-color:#fffefb;
   color: #fffefb;
 }
+/*End of Add task button*/
+
 
 /* Add task window */
-
 .line {
   width: 400px;
   height: 2px;
@@ -289,59 +291,13 @@ h3 {
   border-width: 2px;
   border-color: #304c89;
 }
+/*End of Add task window*/
 
-/*Category Boxes*/
-.category-box {
-  color: #fffefb;
-  width: auto;
-  height: auto;
-  font-family: inherit;
-  font-size: 15px;
-  border: #304c89;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
-  border-style: solid;
-  border-width: 2px;
-  margin-bottom: 10px;
-  margin-left: 2px;
-  margin-top: 10px;
-  margin-right: 8px;
-  padding: 6px;
-}
-
-.category-box:hover {
-  transform: scale(1.05);
-}
-
-.sub-box {
-  color: #fffefb;
-  
-  background-color: #9eb7e5;
-  width: auto;
-  height: auto;
-  font-family: inherit;
-  font-size: 10px;
-  font-weight: bold;
-  border: #304c89;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
-  border-style: solid;
-  border-width: 1.9999px;
-  margin-bottom: 4px;
-  margin-left: 66px;
-  margin-top: 4px;
-  margin-right: 8px;
-  padding: 6px;
-}
 
 /*Task Checkboxes*/
 .checkbox-list {
   color: #304c89;
-  background-color: #ffffff;
+  background-color: white;
   width: auto;
   height: auto;
   font-family: inherit;
@@ -366,6 +322,28 @@ h3 {
   transform: scale(1.05);
 }
 
+.sub-box {
+  color: #fffefb;
+  background-color: #9eb7e5;
+  width: auto;
+  height: auto;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: bold;
+  border: #304c89;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-style: solid;
+  border-width: 1.9999px;
+  margin-bottom: 4px;
+  margin-left: 66px;
+  margin-top: 4px;
+  margin-right: 8px;
+  padding: 6px;
+}
+
 .to-do-checkbox {
   float: left;
   margin-right: 20px;
@@ -380,6 +358,7 @@ h3 {
 ul {
   padding: 0;
   margin: 0;
+  overflow-y: scroll;
 }
 
 li {
@@ -402,6 +381,7 @@ li {
   border-width: 2px;
   margin-left: 5px;
 }
+/*End of Task Checkboxes*/
 
 
 /*To-do-list*/
@@ -415,7 +395,6 @@ li {
 .scroll {
   height: 80vh;
   scrollbar-width: thin;
-  
 }
 
 .scroll::-webkit-scrollbar {
@@ -499,28 +478,30 @@ textarea:focus {
 .update-controller {
   display: none;
 }
+/*End of To-do-list*/
+
 
 /*Discard Changes Alert*/
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
   background-color: #CEDAF0;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto;
   padding: 20px;
   font-family: "Instrument Sans";
   font-size: 15px;
   border: 10px solid #304C89;
-  width: 300px; /* Could be more or less, depending on screen size */
+  width: 300px;
   text-align: center;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -543,6 +524,7 @@ button {
 
 button:hover {
     background-color: #304c89;
+    color: #fffefb;
   }
 /*End of Discard Changes Alert*/
 
@@ -582,59 +564,6 @@ button:hover {
 /*End of Strikethrough*/
 
 
-/*Checkboxes*/
-.checkbox-container {
-  display: flex;
-  align-items: center;
-}
-
-.checkbox {
-  display: none; /* Hide the default checkbox */
-}
-
-.checkbox-label {
-  position: relative;
-  padding-left: 30px; /* Space for the custom checkbox */
-  cursor: pointer;
-  user-select: none; /* Prevent text selection */
-}
-
-.checkbox-label::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 20px; /* Width of the custom checkbox */
-  height: 20px; /* Height of the custom checkbox */
-  border: 2px solid #304C89; /* Border color */
-  border-radius: 2px;
-  background-color: transparent; /* Background color */
-  transition: background-color 0.3s, border-color 0.3s; /* Transition effects */
-}
-
-.checkbox:checked + .checkbox-label::before {
-  background-color: #304C89; /* Background color when checked */
-  border-color: #304C89; /* Border color when checked */
-}
-
-.checkbox:checked + .checkbox-label::after {
-  content: '';
-  position: absolute;
-  left: 8px; /* Position of the check mark */
-  top: 4px; /* Position of the check mark */
-  width: 5px; /* Width of the check mark */
-  height: 10px; /* Height of the check mark */
-  border: solid white; /* Check mark color */
-  border-width: 0 2px 2px 0; /* Check mark shape */
-  transform: rotate(45deg); /* Rotate to form a check mark */
-}
-
-.checkbox-list.checked {
-  background-color: rgba(0, 0, 0, 0.1); /* Light dark layer */
-}
-/*End of Checkboxes*/
-
-
 /*Right Click Taskbox Menu*/
 .context {
   width: 200px;
@@ -664,36 +593,37 @@ button:hover {
 }
 
 .description-background {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .description-display {
   background-color: #CEDAF0;
-  padding: 10px;
+  padding: 1%;
   font-family: "Instrument Sans";
   font-size: 10px;
-  border: 3px solid #304C89;
+  border: 2px solid #304C89;
   width: 300px;
-  height: 100px;
+  height: auto;
   text-align: center;
   border-radius: 6px;
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 1001; /* Ensure it appears above other elements */
+  z-index: 1001;
   display: none;
+  overflow-wrap: break-word;
 }
 
 #contextmenu {
   overflow: hidden;
 }
 
-/*End of Right Click Taskbox Menu*/
+/*End of Right Click Context Menu*/

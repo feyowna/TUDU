@@ -2,14 +2,6 @@ const todo = localStorage.getItem("items")
           ? JSON.parse(localStorage.getItem("items"))
           : [];
 
-// 1 -- SIDEBAR
-document.querySelector("#menu-btn").addEventListener("click", () => {
-  const sideBar = document.querySelector(".side-bar");
-  sideBar.classList.toggle('active');
-});
-// 1 -- END OF SIDEBAR
-
-// 2 -- TASK LISTENER
 // Event listener for "Enter" button
 document.querySelector("#enter").addEventListener("click", () => {
   const item = document.querySelector("#item");
@@ -30,11 +22,13 @@ document.querySelector("#item").addEventListener("keypress", (e) => {
   }
 });
 
+//Open task for add task button
 function openAddTask() {
   const rightColumn = document.querySelector('.right-column');
   rightColumn.style.display = "flex";
 }
 
+//To do list display after input and save
 function displayItems() {
   const todoList = document.querySelector("#to-do-list");
   const todoCount = document.querySelector("#todoCount");
@@ -90,6 +84,7 @@ function displayItems() {
   todoCount.textContent = disabledCount;
 }
 
+// To do list structure
 function createItem(item, deadline, category, description) {
   if (
     item.value.trim() === "" ||
@@ -136,12 +131,20 @@ function toggleTask(index) {
   displayItems();
 }
 
+// Delete Task 
 function deleteTask(index) {
   todo.splice(index, 1);
   saveToLocalStorage();
   displayItems();
 }
 
+// Close Description
+function closeDescription() {
+  var descriptionDisplay = document.getElementById("descriptionDisplay");
+  descriptionDisplay.style.display = "none"; // Hide the description display
+}
+
+// Edit Task 
 function editTask(index) {
   const todoItem = document.getElementById(`todo-${index}`);
   const existingText = todo[index].text;
@@ -173,6 +176,7 @@ function editTask(index) {
   });
 }
 
+// Discard Tasks 
 function clearInput() {
   const item = document.querySelector("#item");
   const deadline = document.querySelector("#deadline");
@@ -210,6 +214,7 @@ document.getElementById('discard').addEventListener('click', () => {
   document.getElementById('modal').style.display = 'none';
 });
 
+// Save tasks to list
 function saveToLocalStorage() {
   localStorage.setItem("items", JSON.stringify(todo));
 }
@@ -239,12 +244,13 @@ window.onload = function () {
     }
   });
   
+  // Hide the context menu
   document.addEventListener('click', () => {
-    contextMenu.style.display = 'none'; // Hide the context menu
+    contextMenu.style.display = 'none'; 
   });
   
   document.getElementById('action1').addEventListener("click", () => {
-    contextMenu.style.display = 'none'; // Hide the context menu
+    contextMenu.style.display = 'none'; 
     editTask(elementId);
   });
   
